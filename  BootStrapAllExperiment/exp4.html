@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Grade Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Grade Calculator</h2>
+
+    <button onclick="calculateGrade()">
+        Enter Marks
+    </button>
+
+    <div id="result"></div>
+
+    <script>
+
+        function calculateGrade() {
+
+            let subjects = parseInt(prompt("Enter Number of Subjects:"));
+
+            let total = 0;
+
+            for(let i = 1; i <= subjects; i++) {
+
+                let marks = parseFloat(prompt("Enter Marks of Subject " + i));
+
+                total += marks;
+            }
+
+            let average = total / subjects;
+
+            let grade;
+
+            if(average >= 90) {
+                grade = "A+";
+            }
+            else if(average >= 80) {
+                grade = "A";
+            }
+            else if(average >= 70) {
+                grade = "B";
+            }
+            else if(average >= 60) {
+                grade = "C";
+            }
+            else if(average >= 50) {
+                grade = "D";
+            }
+            else {
+                grade = "F";
+            }
+
+            let result;
+
+            if(average >= 40) {
+                result = "Pass";
+            }
+            else {
+                result = "Fail";
+            }
+
+            document.getElementById("result").innerHTML =
+                "Total Marks = " + total + "<br>" +
+                "Average Marks = " + average.toFixed(2) + "<br>" +
+                "Grade = " + grade + "<br>" +
+                "Result = " + result;
+        }
+
+    </script>
+
+</body>
+</html>

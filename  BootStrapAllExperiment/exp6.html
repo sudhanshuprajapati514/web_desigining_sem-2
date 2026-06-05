@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation and Event Handling</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 40px;
+            transition: 0.5s;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="heading">Welcome to JavaScript DOM</h1>
+
+    <p id="para">
+        This paragraph can be shown, hidden, and modified using JavaScript.
+    </p>
+
+    <input type="text" id="userInput" placeholder="Enter New Heading">
+
+    <br><br>
+
+    <button id="changeTextBtn">Change Heading</button>
+
+    <button id="changeColorBtn">Change Background Color</button>
+
+    <button id="changeFontBtn">Increase Font Size</button>
+
+    <button id="toggleParaBtn">Show / Hide Paragraph</button>
+
+    <button id="resetBtn">Reset Page</button>
+
+    <script>
+
+        let paragraphVisible = true;
+        let fontSize = 32;
+
+        document.getElementById("changeTextBtn")
+        .addEventListener("click", function () {
+
+            let text = document.getElementById("userInput").value;
+
+            if(text !== "")
+            {
+                document.getElementById("heading").innerHTML = text;
+            }
+        });
+
+        document.getElementById("changeColorBtn")
+        .addEventListener("click", function () {
+
+            document.body.style.backgroundColor = "lightblue";
+        });
+
+        document.getElementById("changeFontBtn")
+        .addEventListener("click", function () {
+
+            fontSize += 5;
+
+            document.getElementById("heading")
+            .style.fontSize = fontSize + "px";
+        });
+
+        document.getElementById("toggleParaBtn")
+        .addEventListener("click", function () {
+
+            let para = document.getElementById("para");
+
+            if(paragraphVisible)
+            {
+                para.style.display = "none";
+                paragraphVisible = false;
+            }
+            else
+            {
+                para.style.display = "block";
+                paragraphVisible = true;
+            }
+        });
+
+        document.getElementById("resetBtn")
+        .addEventListener("click", function () {
+
+            document.getElementById("heading").innerHTML =
+            "Welcome to JavaScript DOM";
+
+            document.body.style.backgroundColor = "white";
+
+            document.getElementById("heading").style.fontSize = "32px";
+
+            document.getElementById("para").style.display = "block";
+
+            document.getElementById("userInput").value = "";
+
+            paragraphVisible = true;
+            fontSize = 32;
+        });
+
+    </script>
+
+</body>
+</html>
